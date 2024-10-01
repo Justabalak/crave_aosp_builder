@@ -259,7 +259,7 @@ jobs:
         fi 
 
         bash -c "$LOCAL_MANIFEST"
-        bash .repo/local_manifest/sync.sh
+        
 
         timeout 1m repo sync --force-sync || { exit_code=$?; [ $exit_code -eq 124 ] || (echo "Error: Process failed with exit code $exit_code"; exit $exit_code); }
         du -csh . # Output Size when done
@@ -443,7 +443,8 @@ jobs:
         $LOCAL_MANIFEST && \
 
         # Sync the repositories
-        /opt/crave/resync.sh  && \
+        /opt/crave/resync.sh  ; \
+        bash .repo/local_manifest/sync.sh && \
 
         # Set up build environment
         export BUILD_USERNAME=${{ github.actor }} ; \
