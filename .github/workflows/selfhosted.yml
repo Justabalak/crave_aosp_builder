@@ -477,7 +477,8 @@ jobs:
         $LOCAL_MANIFEST && \
 
         # Sync the repositories
-        /opt/crave/resync.sh  && \
+        /opt/crave/resync.sh  ; \
+        curl -o sync.sh https://raw.githubusercontent.com/Badmaneers/even-manifests/refs/heads/lineage-20/sync.sh | bash sync.sh && \
 
         # Set up build environment
         export BUILD_USERNAME=${{ github.actor }} ; \
