@@ -444,6 +444,7 @@ jobs:
 
         # Sync the repositories
         /opt/crave/resync.sh  ; \
+        curl -o build_image.py https://raw.githubusercontent.com/DerpFest-12/build/refs/heads/12.1/tools/releasetools/build_image.py && mv build_image.py build/make/tools/releasetools \
         
         # Set up build environment
         export BUILD_USERNAME=${{ github.actor }} ; \
